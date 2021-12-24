@@ -53,6 +53,11 @@ update @ 2021/12/23
 		
 		- use ISP tool , to programming Application code project binary (500K) , when under Boot loader flow		
 		
+		- if plan to use KEIL to programming flash with CRC , refer to below setting
+		
+![image](https://github.com/released/M480BSP_ISP_HID_APROM/blob/main/program_by_KEIL.jpg)
+		
+		
 	- reserve data flash address : 0x7F000
 	
 2. Flash allocation start address

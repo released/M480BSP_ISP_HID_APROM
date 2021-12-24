@@ -175,10 +175,10 @@
             <Capability>1</Capability>
             <DriverSelection>4107</DriverSelection>
           </Flash1>
-          <bUseTDR>0</bUseTDR>
+          <bUseTDR>1</bUseTDR>
           <Flash2>Bin\Nu_Link.dll</Flash2>
           <Flash3>"" ()</Flash3>
-          <Flash4></Flash4>
+          <Flash4>.\ProgramTargetImageWithCRC.ini</Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
           <pFcArmRoot></pFcArmRoot>

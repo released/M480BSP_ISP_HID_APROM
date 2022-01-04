@@ -15,7 +15,7 @@ update @ 2021/12/23
 	
 		- when power on , will check power on source (ex : power on reset , nReset , from application code)
 	
-		- use CRC to calculate Application code checksum (length : 0x7D000)
+		- use CRC to calculate Application code checksum (length : 0x7CFFC)
 		
 		- load Application code checksum , from specific address (at 0x7CFFC)
 		
@@ -35,7 +35,7 @@ update @ 2021/12/23
 	
 		- generateChecksum.cmd : calculate checksum by load the original binary file , and display on KEIL project
 		
-		- generateCRCbinary.cmd : calculate checksum by load the original binary file , and fill 0xFF , range up to 0x7D000
+		- generateCRCbinary.cmd : calculate checksum by load the original binary file , and fill 0xFF , range up to 0x7CFFC
 		
 		- generateCRChex.cmd : conver binary file into hex file
 		
@@ -45,7 +45,7 @@ update @ 2021/12/23
 	
 			modify the file name in KEIL project , also need to modify the file name in these 3 generate***.cmd		
 			
-		- check sum calculate will start from 0 to 0x7C000 , and store in 0x7C000 last 4 bytes (0x7CFFC)
+		- check sum calculate will start from 0 to 0x7CFFC , and store in (0x7D000-4) address (0x7CFFC)
 		
 		- after project compile finish , binary size will be 500K (total application code size : 0x7D000)
 		

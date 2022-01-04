@@ -5,11 +5,11 @@ obj\APROM_application.bin -binary
 # just keep code area for CRC calculation
 # reserve field , from xxxx , to xxxx
 # target size : 0x80000 , 0x80000 - 0x1000*2 for boot loader code size (4K page) - 0x1000 for data flash size
--crop 0x0000 0x7C000
+-crop 0x0000 0x7CFFC
 
 # fill code area with 0xFF
 # fill 0xFF into the field , from xxxx , to xxxx				
--fill 0xFF 0x0000 0x7C000					
+-fill 0xFF 0x0000 0x7CFFC					
 
 # select checksum algorithm
 -crc32-l-e 0x7CFFC			

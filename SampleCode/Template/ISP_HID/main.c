@@ -104,7 +104,7 @@ uint8_t verify_application_chksum(void)
     
     LDROM_DEBUG("Verify Checksum\r\n");
     
-    chksum_cal = caculate_crc32_checksum(0x00000000, (g_apromSize - FMC_FLASH_PAGE_SIZE));
+    chksum_cal = caculate_crc32_checksum(0x00000000, (g_apromSize - 4));//(g_apromSize - FMC_FLASH_PAGE_SIZE)
     LDROM_DEBUG("Caculated .....<0x%08X>\r\n", chksum_cal);
     
     chksum_app = FMC_Read(g_apromSize - 4);    

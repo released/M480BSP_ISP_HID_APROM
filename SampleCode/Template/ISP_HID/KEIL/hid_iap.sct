@@ -12,9 +12,9 @@ LOAD_ROM_1  0x100000 0xFFF
 	}
 }
 
-LOAD_ROM_2  0x7D000 0x2000
+LOAD_ROM_2  0x76000 0x9000
 {
-	APROM_Bootloader.bin  0x7D000 0x2000
+	APROM_Bootloader.bin  0x76000 0x9000
 	{
         .ANY (+RO)
 	}

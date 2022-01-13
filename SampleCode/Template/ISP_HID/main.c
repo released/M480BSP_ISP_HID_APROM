@@ -58,7 +58,16 @@ uint8_t check_reset_source(void)
     LDROM_DEBUG("Reset Source <0x%08X>\r\n", src);
    
     tag = rtc_read_magic_tag();
-    
+  
+	#if 1	// use button : PG15 to control update			  
+	if (PG15 == FALSE)
+	{
+		rtc_write_magic_tag(0);
+		LDROM_DEBUG("Enter BOOTLOADER w/ Button pressed\r\n");
+		return TRUE;
+	}
+	#endif
+	
     if (src & SYS_RSTSTS_PORF_Msk) {
         SYS_ClearResetSrc(SYS_RSTSTS_PORF_Msk);
         
@@ -119,6 +128,12 @@ uint8_t verify_application_chksum(void)
     }
 }
 
+void BTN_Init(void)	//ETM M487 , BTN1 : PG15
+{
+	SYS->GPG_MFPH = (SYS->GPG_MFPH & ~(SYS_GPG_MFPH_PG15MFP_Msk)) | (SYS_GPG_MFPH_PG15MFP_GPIO);
+	GPIO_SetMode(PG,BIT15,GPIO_MODE_INPUT);
+	
+}
 
 void UARTx_Process(void)
 {
@@ -296,6 +311,8 @@ int main(void)
 	DEBUG_UART_Init();
 
 	TIMER1_Init();
+
+	BTN_Init();
 
 	CLK->AHBCLK |= CLK_AHBCLK_ISPCKEN_Msk;
     // Enable FMC and APROM update

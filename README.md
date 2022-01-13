@@ -11,13 +11,13 @@ update @ 2021/12/23
 		
 				LDROM_Bootloader.bin : 0x100000 ~ 0xFFF (default LDROM size : 4K)
 			
-				APROM_Bootloader.bin : 0x7D000 0x2000 (reserve 8K size , to store extra boot loader code , total boot loader size : 12K)
+				APROM_Bootloader.bin : 0x76000 0x9000 (reserve 36K size , to store extra boot loader code , total boot loader size : 40K)
 	
 		- when power on , will check power on source (ex : power on reset , nReset , from application code)
 	
-		- use CRC to calculate Application code checksum (length : 0x7CFFC)
+		- use CRC to calculate Application code checksum (length : 0x75FFC)
 		
-		- load Application code checksum , from specific address (at 0x7CFFC)
+		- load Application code checksum , from specific address (at 0x75FFC)
 		
 		- if two checksum result are different , will trap in Boot loader , and wait for ISP tool hand-shaking
 		
@@ -35,7 +35,7 @@ update @ 2021/12/23
 	
 		- generateChecksum.cmd : calculate checksum by load the original binary file , and display on KEIL project
 		
-		- generateCRCbinary.cmd : calculate checksum by load the original binary file , and fill 0xFF , range up to 0x7CFFC
+		- generateCRCbinary.cmd : calculate checksum by load the original binary file , and fill 0xFF , range up to 0x75FFC
 		
 		- generateCRChex.cmd : conver binary file into hex file
 		
@@ -45,9 +45,9 @@ update @ 2021/12/23
 	
 			modify the file name in KEIL project , also need to modify the file name in these 3 generate***.cmd		
 			
-		- check sum calculate will start from 0 to 0x7CFFC , and store in (0x7D000-4) address (0x7CFFC)
+		- check sum calculate will start from 0 to 0x75FFC , and store in (0x76000-4) address (0x75FFC)
 		
-		- after project compile finish , binary size will be 500K (total application code size : 0x7D000)
+		- after project compile finish , binary size will be 472K (total application code size : 0x76000)
 		
 		- under terminal , use keyboard , 'z' , 'Z' , will write specific value in RTC backup register , and return to boot loader
 		
@@ -64,13 +64,13 @@ update @ 2021/12/23
 
 	- LDROM_Bootloader.bin : 0x100000 ~ 0xFFF
 	
-	- APROM_Bootloader.bin : 0x7D000 0x2000
+	- APROM_Bootloader.bin : 0x76000 0x9000
 	
 	- Application code : 0x00000
 	
 	- Data flash : 0x7F000
 	
-	- Chcecksum storage : 0x7CFFC
+	- Chcecksum storage : 0x75FFC
 
 3. Function assignment
 

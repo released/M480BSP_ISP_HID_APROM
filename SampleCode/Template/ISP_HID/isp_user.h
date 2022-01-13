@@ -19,12 +19,13 @@
 /*
 		flash page : 4K (0x1000)
 		boot loader in LDROM : 4K 
-		boot loader in APROM : 4K*2 (pos : start from 0x7D000)
+		boot loader in APROM : 4K*9 (pos : start from 0x76000)
+		
 		dataflash : 4K , 0x7F000 		
-		application code checksum : 0x7CFFC
+		application code checksum : 0x75FFC
 
 */
-#define APROM_APPLICATION_SIZE      		0x0007D000UL
+#define APROM_APPLICATION_SIZE      		0x00076000UL
 
 #include "fmc_user.h"
 
@@ -59,8 +60,24 @@ extern uint32_t g_apromSize, g_dataFlashAddr, g_dataFlashSize;
 uint8_t rtc_read_magic_tag(void);
 void rtc_write_magic_tag(uint8_t tag);
 
+#if 1
+#ifdef __ICCARM__
+#pragma data_alignment=4
+extern uint8_t usb_rcvbuf[];
+#pragma data_alignment=4
+extern uint8_t usb_sendbuf[];
+#pragma data_alignment=4
+extern uint8_t response_buff[64];
+#else
+extern __attribute__((aligned(4))) uint8_t usb_rcvbuf[];
+extern __attribute__((aligned(4))) uint8_t usb_sendbuf[];
+extern __attribute__((aligned(4))) uint8_t response_buff[64];
+#endif
 
+#else
 extern __align(4) uint8_t usb_rcvbuf[];
 extern __align(4) uint8_t usb_sendbuf[];
 extern __align(4) uint8_t response_buff[64];
+#endif
+
 #endif  // #ifndef ISP_USER_H

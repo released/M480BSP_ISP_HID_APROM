@@ -1,0 +1,23 @@
+--cpu=Cortex-M4.fp
+".\obj\system_m480.o"
+".\obj\startup_m480.o"
+".\obj\main.o"
+".\obj\descriptors.o"
+".\obj\hid_transfer.o"
+".\obj\fmc_user.o"
+".\obj\isp_user.o"
+".\obj\targetdev.o"
+".\obj\usbd_user.o"
+".\obj\fmc.o"
+".\obj\clk.o"
+".\obj\retarget.o"
+".\obj\uart.o"
+".\obj\sys.o"
+".\obj\timer.o"
+".\obj\gpio.o"
+".\obj\crc.o"
+".\obj\rtc.o"
+--library_type=microlib --strict --scatter ".\hid_iap.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\lst\ISP_HID.map" -o .\obj\ISP_HID.axf

@@ -267,6 +267,9 @@ void SYS_Init(void)
 
     CLK->AHBCLK |= CLK_AHBCLK_ISPCKEN_Msk;
 
+    /* Enable USBD module clock */
+    CLK_EnableModuleClock(USBD_MODULE);
+	
     CLK_EnableModuleClock(UART0_MODULE);
     CLK_SetModuleClock(UART0_MODULE, CLK_CLKSEL1_UART0SEL_HIRC, CLK_CLKDIV0_UART0(1));
 

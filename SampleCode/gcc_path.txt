@@ -1,0 +1,2 @@
+\M480BSP\SampleCode\Template_AP
+\M480BSP\SampleCode\Template_LD
